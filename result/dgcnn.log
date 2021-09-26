@@ -1,0 +1,257 @@
+Model: "model"
+__________________________________________________________________________________________________
+Layer (type)                    Output Shape         Param #     Connected to                     
+==================================================================================================
+input_1 (InputLayer)            [(None, None, 1)]    0                                            
+__________________________________________________________________________________________________
+dropout (Dropout)               (None, None, 1)      0           input_1[0][0]                    
+__________________________________________________________________________________________________
+input_3 (InputLayer)            [(None, None, None)] 0                                            
+__________________________________________________________________________________________________
+graph_convolution (GraphConvolu (None, None, 32)     32          dropout[0][0]                    
+                                                                 input_3[0][0]                    
+__________________________________________________________________________________________________
+dropout_1 (Dropout)             (None, None, 32)     0           graph_convolution[0][0]          
+__________________________________________________________________________________________________
+graph_convolution_1 (GraphConvo (None, None, 1)      32          dropout_1[0][0]                  
+                                                                 input_3[0][0]                    
+__________________________________________________________________________________________________
+tf.concat (TFOpLambda)          (None, None, 33)     0           graph_convolution[0][0]          
+                                                                 graph_convolution_1[0][0]        
+__________________________________________________________________________________________________
+input_2 (InputLayer)            [(None, None)]       0                                            
+__________________________________________________________________________________________________
+sort_pooling (SortPooling)      (None, 1155, 1)      0           tf.concat[0][0]                  
+                                                                 input_2[0][0]                    
+__________________________________________________________________________________________________
+conv1d (Conv1D)                 (None, 35, 16)       544         sort_pooling[0][0]               
+__________________________________________________________________________________________________
+max_pooling1d (MaxPooling1D)    (None, 17, 16)       0           conv1d[0][0]                     
+__________________________________________________________________________________________________
+flatten (Flatten)               (None, 272)          0           max_pooling1d[0][0]              
+__________________________________________________________________________________________________
+dense (Dense)                   (None, 128)          34944       flatten[0][0]                    
+__________________________________________________________________________________________________
+dropout_2 (Dropout)             (None, 128)          0           dense[0][0]                      
+__________________________________________________________________________________________________
+dense_1 (Dense)                 (None, 1)            129         dropout_2[0][0]                  
+==================================================================================================
+Total params: 35,681
+Trainable params: 35,681
+Non-trainable params: 0
+__________________________________________________________________________________________________
+None
+Epoch 1/100
+158/158 - 5s - loss: 0.3517 - accuracy: 0.8356
+Epoch 2/100
+158/158 - 4s - loss: 0.2946 - accuracy: 0.8658
+Epoch 3/100
+158/158 - 4s - loss: 0.2761 - accuracy: 0.8742
+Epoch 4/100
+158/158 - 4s - loss: 0.2626 - accuracy: 0.8746
+Epoch 5/100
+158/158 - 4s - loss: 0.2461 - accuracy: 0.8767
+Epoch 6/100
+158/158 - 4s - loss: 0.2403 - accuracy: 0.8815
+Epoch 7/100
+158/158 - 4s - loss: 0.2388 - accuracy: 0.8807
+Epoch 8/100
+158/158 - 3s - loss: 0.2388 - accuracy: 0.8839
+Epoch 9/100
+158/158 - 3s - loss: 0.2331 - accuracy: 0.8846
+Epoch 10/100
+158/158 - 3s - loss: 0.2348 - accuracy: 0.8829
+Epoch 11/100
+158/158 - 3s - loss: 0.2340 - accuracy: 0.8815
+Epoch 12/100
+158/158 - 3s - loss: 0.2324 - accuracy: 0.8862
+Epoch 13/100
+158/158 - 3s - loss: 0.2308 - accuracy: 0.8852
+Epoch 14/100
+158/158 - 3s - loss: 0.2306 - accuracy: 0.8837
+Epoch 15/100
+158/158 - 3s - loss: 0.2279 - accuracy: 0.8839
+Epoch 16/100
+158/158 - 3s - loss: 0.2260 - accuracy: 0.8860
+Epoch 17/100
+158/158 - 3s - loss: 0.2278 - accuracy: 0.8854
+Epoch 18/100
+158/158 - 3s - loss: 0.2282 - accuracy: 0.8854
+Epoch 19/100
+158/158 - 3s - loss: 0.2260 - accuracy: 0.8858
+Epoch 20/100
+158/158 - 3s - loss: 0.2232 - accuracy: 0.8874
+Epoch 21/100
+158/158 - 3s - loss: 0.2281 - accuracy: 0.8850
+Epoch 22/100
+158/158 - 3s - loss: 0.2239 - accuracy: 0.8874
+Epoch 23/100
+158/158 - 3s - loss: 0.2240 - accuracy: 0.8823
+Epoch 24/100
+158/158 - 3s - loss: 0.2233 - accuracy: 0.8880
+Epoch 25/100
+158/158 - 3s - loss: 0.2232 - accuracy: 0.8896
+Epoch 26/100
+158/158 - 3s - loss: 0.2232 - accuracy: 0.8856
+Epoch 27/100
+158/158 - 3s - loss: 0.2262 - accuracy: 0.8835
+Epoch 28/100
+158/158 - 3s - loss: 0.2235 - accuracy: 0.8898
+Epoch 29/100
+158/158 - 3s - loss: 0.2217 - accuracy: 0.8878
+Epoch 30/100
+158/158 - 3s - loss: 0.2227 - accuracy: 0.8910
+Epoch 31/100
+158/158 - 3s - loss: 0.2199 - accuracy: 0.8886
+Epoch 32/100
+158/158 - 3s - loss: 0.2219 - accuracy: 0.8912
+Epoch 33/100
+158/158 - 3s - loss: 0.2194 - accuracy: 0.8870
+Epoch 34/100
+158/158 - 3s - loss: 0.2204 - accuracy: 0.8898
+Epoch 35/100
+158/158 - 3s - loss: 0.2191 - accuracy: 0.8910
+Epoch 36/100
+158/158 - 3s - loss: 0.2234 - accuracy: 0.8850
+Epoch 37/100
+158/158 - 3s - loss: 0.2205 - accuracy: 0.8858
+Epoch 38/100
+158/158 - 3s - loss: 0.2204 - accuracy: 0.8860
+Epoch 39/100
+158/158 - 3s - loss: 0.2179 - accuracy: 0.8914
+Epoch 40/100
+158/158 - 3s - loss: 0.2192 - accuracy: 0.8904
+Epoch 41/100
+158/158 - 3s - loss: 0.2184 - accuracy: 0.8866
+Epoch 42/100
+158/158 - 3s - loss: 0.2195 - accuracy: 0.8862
+Epoch 43/100
+158/158 - 3s - loss: 0.2181 - accuracy: 0.8882
+Epoch 44/100
+158/158 - 3s - loss: 0.2194 - accuracy: 0.8890
+Epoch 45/100
+158/158 - 3s - loss: 0.2167 - accuracy: 0.8888
+Epoch 46/100
+158/158 - 3s - loss: 0.2158 - accuracy: 0.8894
+Epoch 47/100
+158/158 - 3s - loss: 0.2207 - accuracy: 0.8868
+Epoch 48/100
+158/158 - 3s - loss: 0.2167 - accuracy: 0.8870
+Epoch 49/100
+158/158 - 3s - loss: 0.2177 - accuracy: 0.8852
+Epoch 50/100
+158/158 - 4s - loss: 0.2179 - accuracy: 0.8898
+Epoch 51/100
+158/158 - 3s - loss: 0.2173 - accuracy: 0.8888
+Epoch 52/100
+158/158 - 3s - loss: 0.2156 - accuracy: 0.8868
+Epoch 53/100
+158/158 - 3s - loss: 0.2173 - accuracy: 0.8866
+Epoch 54/100
+158/158 - 3s - loss: 0.2159 - accuracy: 0.8870
+Epoch 55/100
+158/158 - 3s - loss: 0.2152 - accuracy: 0.8894
+Epoch 56/100
+158/158 - 3s - loss: 0.2168 - accuracy: 0.8880
+Epoch 57/100
+158/158 - 3s - loss: 0.2164 - accuracy: 0.8878
+Epoch 58/100
+158/158 - 3s - loss: 0.2196 - accuracy: 0.8888
+Epoch 59/100
+158/158 - 3s - loss: 0.2151 - accuracy: 0.8856
+Epoch 60/100
+158/158 - 3s - loss: 0.2152 - accuracy: 0.8908
+Epoch 61/100
+158/158 - 3s - loss: 0.2137 - accuracy: 0.8878
+Epoch 62/100
+158/158 - 3s - loss: 0.2161 - accuracy: 0.8886
+Epoch 63/100
+158/158 - 3s - loss: 0.2181 - accuracy: 0.8900
+Epoch 64/100
+158/158 - 3s - loss: 0.2143 - accuracy: 0.8886
+Epoch 65/100
+158/158 - 3s - loss: 0.2127 - accuracy: 0.8894
+Epoch 66/100
+158/158 - 3s - loss: 0.2153 - accuracy: 0.8910
+Epoch 67/100
+158/158 - 3s - loss: 0.2153 - accuracy: 0.8870
+Epoch 68/100
+158/158 - 3s - loss: 0.2162 - accuracy: 0.8888
+Epoch 69/100
+158/158 - 3s - loss: 0.2145 - accuracy: 0.8888
+Epoch 70/100
+158/158 - 3s - loss: 0.2158 - accuracy: 0.8864
+Epoch 71/100
+158/158 - 3s - loss: 0.2140 - accuracy: 0.8884
+Epoch 72/100
+158/158 - 3s - loss: 0.2142 - accuracy: 0.8900
+Epoch 73/100
+158/158 - 3s - loss: 0.2160 - accuracy: 0.8896
+Epoch 74/100
+158/158 - 3s - loss: 0.2282 - accuracy: 0.8884
+Epoch 75/100
+158/158 - 3s - loss: 0.2208 - accuracy: 0.8894
+Epoch 76/100
+158/158 - 3s - loss: 0.2220 - accuracy: 0.8866
+Epoch 77/100
+158/158 - 3s - loss: 0.2219 - accuracy: 0.8904
+Epoch 78/100
+158/158 - 3s - loss: 0.2200 - accuracy: 0.8900
+Epoch 79/100
+158/158 - 3s - loss: 0.2189 - accuracy: 0.8884
+Epoch 80/100
+158/158 - 3s - loss: 0.2213 - accuracy: 0.8890
+Epoch 81/100
+158/158 - 3s - loss: 0.2186 - accuracy: 0.8880
+Epoch 82/100
+158/158 - 3s - loss: 0.2180 - accuracy: 0.8862
+Epoch 83/100
+158/158 - 7s - loss: 0.2169 - accuracy: 0.8900
+Epoch 84/100
+158/158 - 6s - loss: 0.2145 - accuracy: 0.8882
+Epoch 85/100
+158/158 - 4s - loss: 0.2143 - accuracy: 0.8882
+Epoch 86/100
+158/158 - 4s - loss: 0.2156 - accuracy: 0.8876
+Epoch 87/100
+158/158 - 4s - loss: 0.2152 - accuracy: 0.8864
+Epoch 88/100
+158/158 - 4s - loss: 0.2157 - accuracy: 0.8900
+Epoch 89/100
+158/158 - 4s - loss: 0.2168 - accuracy: 0.8864
+Epoch 90/100
+158/158 - 3s - loss: 0.2159 - accuracy: 0.8882
+Epoch 91/100
+158/158 - 4s - loss: 0.2142 - accuracy: 0.8898
+Epoch 92/100
+158/158 - 4s - loss: 0.2162 - accuracy: 0.8914
+Epoch 93/100
+158/158 - 4s - loss: 0.2126 - accuracy: 0.8902
+Epoch 94/100
+158/158 - 4s - loss: 0.2123 - accuracy: 0.8902
+Epoch 95/100
+158/158 - 4s - loss: 0.2141 - accuracy: 0.8900
+Epoch 96/100
+158/158 - 4s - loss: 0.2137 - accuracy: 0.8880
+Epoch 97/100
+158/158 - 4s - loss: 0.2151 - accuracy: 0.8890
+Epoch 98/100
+158/158 - 4s - loss: 0.2160 - accuracy: 0.8888
+Epoch 99/100
+158/158 - 4s - loss: 0.2156 - accuracy: 0.8902
+Epoch 100/100
+158/158 - 4s - loss: 0.2155 - accuracy: 0.8894
+
+              precision    recall  f1-score   support
+
+           0     0.7414    0.9665    0.8391       626
+           1     0.9845    0.8631    0.9198      1541
+
+    accuracy                         0.8929      2167
+   macro avg     0.8629    0.9148    0.8794      2167
+weighted avg     0.9142    0.8929    0.8965      2167
+
+[[ 605   21]
+ [ 211 1330]]
+      TPR       FPR       FNR   ROC AUC
+   0.8631    0.0335    0.1369    0.9529
